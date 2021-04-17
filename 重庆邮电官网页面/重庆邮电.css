@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+header {
+    width: 100%;
+    height: 120px;
+    background-color: #E4E4E4;
+}
+
+.bc1 {
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+    border: 1px solid transparent;
+}
+
+.img1 {
+    margin-top: 30px;
+    margin-left: 50px;
+    position: relative;
+}
+
+.img2 {
+    position: absolute;
+    margin-left: 400px;
+    margin-top: 45px;
+}
+.img3{
+    position: relative;
+    width: 180px;
+    height: 150px;
+    margin-top: 10px;
+}
+
+nav {
+    width: 100%;
+    height: 45px;
+    background-color: #00C896;
+}
+
+.box {
+    width: 80%;
+    height: 40px;
+    border: 1px solid transparent;
+    margin-left: 180px;
+}
+
+li {
+    display: inline-block;
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+a {
+    color: white;
+    font-size: 15px;
+}
+
+.lun {
+    width: 1000px;
+    height: 300px;
+    margin-top: 2px;
+    margin-left: 180px;
+    background-image: url(img/1.png);
+    background-size: 100%;
+    animation: loop 10s linear infinite;
+}
+
+@keyframes loop {
+    20% {
+        background-image: url(img/2.png);
+    }
+
+    40% {
+        background-image: url(img/3.png);
+    }
+
+    60% {
+        background-image: url(img/1.png);
+    }
+
+    80% {
+        background-image: url(img/2.png);
+    }
+
+    100% {
+        background-image: url(img/3.png);
+    }
+}
+.lun2 {
+    width: 100%;
+    height: 100%;
+    /* margin-top: 2px;
+    margin-left: 180px; */
+    background-image: url(img/r1.png);
+    /* background-size: 100%; */
+    animation: loop2 10s linear infinite;
+}
+
+@keyframes loop2 {
+    20% {
+        background-image: url(img/r2.png);
+    }
+
+    40% {
+        background-image: url(img/r3.png);
+    }
+
+    60% {
+        background-image: url(img/r4.png);
+    }
+
+    80% {
+        background-image: url(img/r5.png);
+    }
+
+    100% {
+        background-image: url(img/r6.png);
+    }
+}
+.box1{
+    float: left;
+    width: 700px;
+    height: 200px;
+    border: 1px solid transparent;
+    margin: 340px 0 0 180px;
+    position: relative;
+}
+h3{
+    margin-bottom: 10px;
+}
+h5{
+    font-weight: normal;
+    color: #ccc;
+    font-size: 12px;
+}
+
+.tu{
+    position: absolute;
+    float: right;
+    width: 260px;
+    height: 160px;
+    border: 1px solid transparent;
+    margin: 375px 0 0 920px;
+}
+.new1{
+    position: absolute;
+    width: 190px;
+    height: 180px;
+    margin-left: 190px;
+    margin-top: -150px;
+    line-height: 2;
+    font-size: 12px;
+}
+.new2{
+    position: absolute;
+    width: 290px;
+    height: 170px;
+    margin-left: 400px;
+    margin-top: -160px;
+    line-height: 2;
+    font-size: 12px;
+    border: 1px solidtransparent;
+}
+.new2 a{
+    color: black;
+    text-align: 10px;
+    line-height: 1;
+    color: black;
+}
+.new3{
+    float: left;
+    width: 330px;
+    height: 200px;
+    border: 1px solid transparent;
+    margin: 20px 0 0 180px;
+    position: relative;
+}
+table{
+    width: 100%;
+    height: 160px;
+    font-size: 14px;
+    /* line-height: 2; */
+    border-collapse: collapse;
+    text-align: center;
+    border: none;
+}
+button{
+    margin: 5px;
+    width: 60px;
+    height: 30px;
+    background-color:  #00C896;
+    border: none;
+    color: white;
+}
+.new4{
+    float: left;
+    width: 322px;
+    height: 200px;
+    border: 1px solid transparent;
+    margin: 20px 0 0 10px;
+    position: relative;
+}
+.new4 a{
+    color: black;
+    margin-top: 5px;
+    line-height: 2.5;
+}
+.new5{
+    float: left;
+    width: 322px;
+    height: 200px;
+    border: 1px solid transparent;
+    margin: 19px 0 0 10px;
+    position: relative;
+}
+.new5 a{
+    color: black;
+    margin-top: 5px;
+    line-height: 2.5;
+}
+footer{
+    margin-top: 820px;
+    width: 100%;
+    height: 120px;
+    border: 1px solid transparent;
+    text-align: center;
+    background-color: #00C896;
+    font-size: 10px;
+    color: white;
+    line-height: 1.5;
+}
+hr{
+    
+    color: #9A9A9A;
+}
+.f1{
+    position: relative;
+    margin-top: 30px;
+}
+.f2{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: -100px;
+    
+}
+.f3{
+  
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 600px;
+}
+.f4{
+    position: absolute;
+   margin-top: -25px;
+    margin-left: 240px;
+
+}
