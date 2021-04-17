@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            /* 关键帧动画：必须要有的是动画名，动画时间 */
+            animation-name: move;
+            animation-duration: 2s;
+            animation: move 3s linear infinite;
+        }
+        /* 创建一个关键帧动画:对开发最重要的的就是可以控制过渡的执行过程 */
+        @keyframes move{
+            0%{
+                left: 0;
+                top: 0;
+            }
+            25%{
+                left: 100px;
+                top: 0;
+            }
+            50%{
+                left: 100px;
+                top: 100px;
+            }
+            75%{
+                left: 200px;
+                top: 100px;
+            }
+            100%{
+                left: 200px;
+                top: 200px;
+            }
+        }
+
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 40px auto;
+            animation: spin 2s;
+            /* 设置动画重复的次数  infinite永久*/
+            animation-iteration-count: infinite;
+            /* 每两个关键帧之间动画的速率 */
+            animation-timing-function: linear;
+        }
+        @keyframes spin{
+            0%{
+               transform: rotate(0);
+            }
+            
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        /* css过渡和动画的区别和联系：
+        1.都能实现动画，过渡只能在元素样式发生改变的时候为这个改变添加动画，
+        关键帧动画能够详细的设置,每一个关键帧的状态（要干什么），当一个动画设计制作完成以后，
+        可以给每一个元素，从而变成一个动画库
+        */
+    </style>
+</head>
+<body>
+    <div id="box"> 
+        
+    </div>
+    <div id="box1">
+
+    </div>
+</body>
+</html>

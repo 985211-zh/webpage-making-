@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        li {
+            height: 50px;
+            text-align: center;
+            line-height: 30px;
+
+        }
+
+        main {
+            margin: 30px auto;
+            width: 999px;
+        }
+
+        ul div {
+            background-color: gray;
+            width: 248px;
+            height: 40px;
+            color: black;
+            line-height: 40px;
+        }
+
+        ul span {
+            box-sizing: border-box;
+            width: 10px;
+            height: 10px;
+            border: 10px solid grey;
+            border-color: grey transparent transparent transparent;
+            margin-left: 110px;
+            display: none;
+        }
+
+        #pic img {
+            width: 999px;
+            height: 332px;
+            display: none;
+        }
+
+        #pic img:nth-child(1) {
+            display: block;
+        }
+        .green {
+            box-sizing: border-box;
+            width: 10px;
+            height: 10px;
+            border: 10px solid grey;
+            border-color: greenyellow transparent transparent transparent;
+            margin-left: 110px;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <ul id="ulTop">
+            <li>
+                <div></div>
+                <span style="display: block;"></span>
+            </li>
+            <li>
+                <div></div>
+                <span></span>
+            </li>
+            <li>
+                <div></div>
+                <span></span>
+            </li>
+            <li>
+                <div></div>
+                <span></span>
+            </li>
+        </ul>
+        <div id="pic">
+            <img src="./images/1.png" alt="">
+            <img src="./images/2.png" alt="">
+            <img src="./images/3.png" alt="">
+            <img src="./images/1.png" alt="">
+        </div>
+    </main>
+</body>
+
+</html>
+<script>
+    var data1 = ["商城活动", "品牌活动", "海尔社区", "新浪微博"];
+    var lis = document.querySelectorAll("li");
+    var img = document.querySelectorAll("img");
+    var span = document.querySelectorAll("span");
+    var div = document.querySelectorAll("div");
+
+    //循环遍历，将元素内容放入
+    for (var i = 0; i < data1.length; i++) {
+        div[i].textContent = data1[i];
+    }
+    for (var i = 0; i < lis.length; i++) {
+        div[i].setAttribute('index', i);
+        div[i].onclick = function () {
+            // 1. 上的模块选项卡，点击某一个，当前这一个底色会是红色，其余不变（排他思想） 修改类名的方式
+            // 干掉所有人 其余的li清除 class 这个类
+           
+            for (var i = 0; i < lis.length; i++) {
+                div[i].style.backgroundColor='gray';
+                div[i].style.color='black';
+            }
+            this.style.backgroundColor='greenyellow';
+            this.style.color='white';
+            // 留下我自己 
+            this.className = 'current';
+            // 2. 下面的显示内容模块
+            var index = this.getAttribute('index');
+            console.log(index);
+            // 干掉所有人 让其余的item 这些div 隐藏
+            for (var i = 0; i < img.length; i++) {
+                img[i].style.display = 'none';
+                span[i].style.display = 'none';
+            }
+            // 留下我自己 让对应的item 显示出来
+            img[index].style.display = 'block';
+            span[index].style.display = 'block';
+            span[index].classList.add("green");
+        }
+    }
+
+</script>

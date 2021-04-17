@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid #000;
+            position: absolute;
+            z-index: 2;
+        }
+        .prize{
+            position: absolute;
+            width: 300px;
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 35px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="300px" height="150px" id="canvas"></canvas>
+    <div class="prize"></div>
+    <script>
+        // 1.遮盖一个灰色层 - 文档加载完成后
+        window.onload = () => {
+            // 获取画布
+            var canvas = document.querySelector("#canvas");
+            var ctx = canvas.getContext("2d");
+            // 绘制矩形
+            ctx.fillStyle = "#999";
+            // 铺满画布
+            ctx.fillRect(0, 0, 300, 150);
+
+            canvas.addEventListener("mousedown", function (e) {
+                this.addEventListener("mousemove", mouseover)
+            })
+
+            // 2.按住鼠标移动
+            var mouseover = (e2) => {
+                let x = e2.pageX;
+                let y = e2.pageY;
+                ctx.clearRect(x, y, 15, 15);
+
+            }
+            // 3.当放开鼠标的时候
+            canvas.addEventListener("mouseup",function(e){
+                this.removeEventListener("mousemove",mouseover);
+            })
+
+        }
+
+        // 3.灰色层消失 - 漏出来奖品
+        var arr = ["特等奖","一等奖","二等奖","三等奖"];
+        var i = Math.floor(Math.random()*arr.length);
+        document.getElementsByClassName("prize")[0].innerHTML = arr[i];
+    </script>
+</body>
+
+</html>

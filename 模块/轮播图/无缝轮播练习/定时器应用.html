@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button>点我</button>
+    <div></div>
+</body>
+<script>
+    var btn = document.getElementsByTagName('button')[0]
+    var div = document.getElementsByTagName('div')[0]
+    // 定义一个变量用来绑定一个定时器的标识(把定时器变量放在外面节省内存不然每点击一次都会开启一个定时器)
+    
+    var timer
+    btn.onclick = function () {
+        // 关闭上一个定时器不然每点击一次都会新生成一个导致速度过快
+        clearInterval(timer)
+        timer = setInterval(function () {
+            var oldvalue = div.offsetLeft;
+            var newvalue = oldvalue + 10
+            if (newvalue > 800) {
+                newvalue = 800
+            }
+            div.style.left = newvalue + 'px'
+            // console.log(newvalue);
+            if (newvalue == 800) {
+                clearInterval(timer)
+            }
+        }, 30)
+    }
+
+</script>
+
+</html>

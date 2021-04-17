@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            perspective: 1000px;
+            margin: 50px auto;
+            /* border: 2px solid #999; */
+            width: 600px;
+            height: 240px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .content {
+            width: 150px;
+            height: 100px;
+            /* background-color: teal; */
+            position: relative;
+            top: 200px;
+            left: 50%;
+            /* transform: translateX(-50%); */
+            margin-left: -75px;
+            transform-style: preserve-3d;
+
+            transform: rotateY(0);
+            transition: all 1s;
+        }
+
+        .item {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: violet;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        .item:nth-child(1) {
+            background-color: sandybrown;
+            transform: rotateY(0) translateZ(240px);
+        }
+
+        .item:nth-child(2) {
+            background-color: indianred;
+            transform: rotateY(40deg) translateZ(240px);
+        }
+
+        .item:nth-child(3) {
+            background-color: orangered;
+            transform: rotateY(80deg) translateZ(240px);
+        }
+
+        .item:nth-child(4) {
+            background-color: khaki;
+            transform: rotateY(120deg) translateZ(240px);
+        }
+
+        .item:nth-child(5) {
+            background-color: aquamarine;
+            transform: rotateY(160deg) translateZ(240px);
+        }
+
+        .item:nth-child(6) {
+            background-color: crimson;
+            transform: rotateY(200deg) translateZ(240px);
+        }
+
+        .item:nth-child(7) {
+            background-color: violet;
+            transform: rotateY(240deg) translateZ(240px);
+        }
+
+        .item:nth-child(8) {
+            background-color: lawngreen;
+            transform: rotateY(280deg) translateZ(240px);
+        }
+
+        .item:nth-child(9) {
+            background-color: lightcoral;
+            transform: rotateY(320deg) translateZ(240px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="content">
+            <!-- 图片总个数减一能被360度整除 -->
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var $cont = document.querySelector('.content');
+    var $items = document.querySelectorAll('.item');
+    // 初始角度
+    var q = 0
+    for (let i = 0; i < $items.length; i++) {
+        $items[i].addEventListener('click', function () {
+            q = q - 40
+           $cont.style.transform = 'rotateY(' + q + 'deg)'
+
+        })
+    }
+</script>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            width: 700px;
+            height: 700px;
+            /* border: 1px solid red; */
+            margin: 0 auto;
+            position: relative;
+        }
+        div{
+            width: 700px;
+            height: 700px;
+            background-image: url(img/fsw.png);
+            background-size: 100% 100%;
+            position: relative;
+            animation: spin 20s infinite linear;
+        }
+        main>img{
+            width: 400px;
+            position: absolute;
+            top: 242px;
+            left: 169px;
+        }
+        .item{
+            position: absolute;
+            animation: ani 20s infinite linear;
+            /* transform-origin属性设置元素旋转起始位置 */
+            transform-origin: center 50px;
+        }
+        .item1 {
+            top: 0px;
+            left: 290px;
+        }
+
+        .item2 {
+            top: 68px;
+            left: 513px;
+        }
+
+        .item3 {
+            top: 312px;
+            left: 610px;
+        }
+
+        .item4 {
+            top: 510px;
+            left: 526px;
+        }
+
+        .item5 {
+            top: 601px;
+            left: 294px;
+        }
+
+        .item6 {
+            top: 521px;
+            left: 56px;
+        }
+
+        .item7 {
+            top: 312px;
+            left: -16px;
+        }
+
+        .item8 {
+            top: 68px;
+            left: 66px;
+        }
+        @keyframes spin{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+
+        }
+        @keyframes ani{
+            0%{
+                transform: rotate(360deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            <img src="img/boy.png" alt="" class="item item1">
+            <img src="img/dog.png" alt="" class="item item2">
+            <img src="img/girl.png" alt="" class="item item3">
+            <img src="img/girls.png" alt="" class="item item4">
+            <img src="img/mimi.png" alt="" class="item item5">
+            <img src="img/mudog.png" alt="" class="item item6">
+            <img src="img/hairboy.png" alt="" class="item item7">
+            <img src="img/shamegirl.png" alt="" class="item item8">
+        </div>
+        <img src="img/big-title.png" alt="">
+    </main>
+    
+</body>
+</html>

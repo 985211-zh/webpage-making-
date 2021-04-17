@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="./city_code.js"></script>
+<script>
+    var pro = document.createElement("select");
+    var shi = document.createElement("select");
+    var areas = document.createElement("select");
+
+
+    // 调取省
+    for (var i = 0; i < data.length; i++) {
+        var option = document.createElement("option");
+        option.textContent = data[i].name;
+        pro.appendChild(option);
+    }
+    document.body.appendChild(pro);
+    // 调取市
+    handleCityChance();
+    document.body.appendChild(shi);
+    // 调取区
+    handleAreaChange();
+    document.body.appendChild(areas);
+
+    pro.onchange=function(){
+        shi.innerHTML="";
+        areas.innerHTML="";
+        handleCityChance();
+    }
+    shi.onchange=function(){
+        areas.innerHTML="";
+        handleAreaChange();
+    }
+
+// 城市封装方法
+    function handleCityChance() {
+
+        for (var j = 0; j < data[pro.selectedIndex].city.length; j++) {
+        var option = document.createElement("option");
+        option.textContent = data[pro.selectedIndex].city[j].name;
+        shi.appendChild(option);
+    }
+    handleAreaChange()
+    }
+// 区得封装方法
+function handleAreaChange() {
+    for (var k = 0; k < data[pro.selectedIndex].city[shi.selectedIndex].area.length; k++) {
+        var option = document.createElement("option");
+        option.textContent = data[pro.selectedIndex].city[shi.selectedIndex].area[k].name;
+        areas.appendChild(option);
+    }
+    }
+
+
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            border: 1px solid white;
+            margin: 200px auto;
+            background-color: red;
+            /* css样式在发生变化的时候，默认的是直接型变化，而没有过渡的动画效果 */
+            /* 将某一个样式，设置为过渡的时候，这个样式发生变化的时候就需要执行过渡动画 */
+            transition: all 2s;
+
+        }
+        #box:hover{
+            background-color: yellow;
+            border: 10px solid red;
+            border-radius: 50%;
+            box-shadow: 0 0 20px black;
+
+
+            transform: scale(2,2) rotate(180deg);
+        }
+        #box:active{
+            /* box-shadow:设置元素阴影的 */
+            box-shadow: 0 0 50px red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">定宽居中</div>
+</body>
+</html>

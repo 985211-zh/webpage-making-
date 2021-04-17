@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+
+        }
+
+        .head {
+            height: 80px;
+            background-color: aqua;
+        }
+
+        .nav {
+            position:relative ;
+            margin: 0 auto;
+            height: 50px;
+            width: 680px;
+            background-color: grey;
+        }
+
+         li {
+            width: 91.14px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            display: inline-block;
+            position: relative;
+            z-index: 100;
+             margin-left: -5px; 
+            /* border:  1px solid blue; */
+        } 
+        .mycecond{
+            border: 1px solid red;
+            background-color: orange;
+            position: absolute;
+            width: 100% ;
+            left: 0;
+            /* top: 0; */
+
+        }
+
+        a {
+            position: relative;
+            z-index: 3;
+            color: blue;
+            /* font-size: 18px; */
+        }
+
+        #huakuai{
+            background-color: red;
+            width: 80px;
+            height: 50px;
+            /* left: 80px; */
+            transition: all 0.5s;
+            top: 0;
+            position: absolute;
+            /* display: inline-block; */
+        }
+        .ding{
+            background-color: red;
+            width: 80px;
+            height: 50px;
+            /* left: 80px; */
+            top: 0;
+            position: absolute;
+            /* display: inline-block; */
+        }
+        /* .fidx{
+            position: fixed;
+
+        } */
+        footer{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+        </div>
+    </header>
+    <div class="mycecond">
+        <!-- <div class="myCentre"> -->
+            <ul class="nav">
+                <li class="ding"></li>
+                <li id="huakuai"></li>
+                <li  class="daohang"><a href="">百家号</a></li>
+                <li class="daohang"><a href="">国内</a></li>
+                <li class="daohang"><a href="">国际</a></li>
+                <li class="daohang"><a href="">军事</a></li>
+                <li class="daohang"><a href="">社会</a></li>
+                <li class="daohang"><a href="">财经</a></li>
+                <li class="daohang"><a href="">个性推荐</a></li>
+            </ul>
+        <!-- </div> -->
+    </div>
+    <footer>
+        <div id="box">
+            <div id="content">
+        
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+                <p>最初原始内容</p>
+            </div>
+            <div>
+                <center id="tip">稍等片刻数据正在努力加载中</center>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+<script>
+    //加载更多
+    var box = document.getElementById("box");
+    var content = document.getElementById("content");
+    var pEles = document.getElementsByTagName("p");
+    var huakuai = document.getElementById("huakuai");
+    var nav = document.getElementsByClassName("mycecond")[0];
+    console.log(nav);
+     // 获取导航标签
+
+     var daohang = document.getElementsByClassName("daohang");
+     console.log(daohang);
+    for(var i = 0; i < daohang.length; i++){
+        daohang[i].index = i;
+        
+        // console.log(daohang[i].index);
+        // console.log(daohang[i]);
+        daohang[i].onmouseover = function(){
+            // console.log(this.index*80 + "px");
+           huakuai.style.left = this.index*91 + "px";
+            // this.style.left = ""
+            // console.log(this.index);
+        }
+        daohang[i].onmouseout = function(){
+            huakuai.style.left = 0 + "px"
+        }
+    }
+
+    // 表示是否正在加载
+    // var isLoading = false;
+    // box.onscroll = function () {
+    //     if (document.documentElement.scrollTop >= document.documentElement.scrollHeight - document.documentElement.clientHeight - 500) {
+    //         if (!isLoading) {
+    //             loadMore();
+    //         }
+    //     }
+    // }
+    window.onscroll = function (){
+        if(document.documentElement.scrollTop >=100){
+           nav.style.top = document.documentElement.scrollTop + "px";
+        }else{
+            nav.style.top = "80px"
+        }
+    }
+
+    document.onscroll = function loadMore() {
+        isLoading = true;
+        setTimeout(function() {
+        for (var i = 0; i < 10; i++) {
+            var p = document.createElement("p");
+            p.textContent = "这是新请求的内容" + (pEles.length + 1);
+            content.appendChild(p);
+        }
+        isLoading= false;
+    }, 2000);
+    }
+
+</script>

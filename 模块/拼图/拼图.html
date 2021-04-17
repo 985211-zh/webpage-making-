@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 800px;
+            height: 800px;
+            background-color: burlywood;
+            position: relative;
+        }
+
+        #box div {
+            width: 200px;
+            height: 200px;
+            background: url(./bg.jpg) no-repeat;
+            position: absolute;
+            /* 子绝父相 */
+            /* top: 0;
+            left: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
+<script>
+    var divBox = document.getElementById("box")
+    var picChips = [];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+
+            var divNode = document.createElement("div");
+            divNode.style.top = 200 * i + "px";
+            divNode.style.left = 200 * j + "px";
+            var posXY = {
+                left: 200 * j,
+                top: 200 * i
+            }
+            if (i !== 3 || j !== 3) {
+                picChips.push(posXY)
+            } else {
+                divNode.style.background = 'none'
+                divNode.className = "space"
+            }
+            divBox.appendChild(divNode);
+        }
+    }
+    console.log(picChips);
+    //    随机抽取对象将left与top的值
+    for (let i = 0; i < 15; i++) {
+        // 随机决定抽取的下标(数组的索引)[0-下一次的循环总数]
+        var ranNum = parseInt(Math.random() * (15 - i));
+        var x = picChips[ranNum].left;
+        var y = picChips[ranNum].top;
+        divBox.children[i].style.backgroundPosition = -x + 'px ' + -y + 'px'
+        // 将抽取过的数据从数组删除
+        picChips.splice(ranNum, 1);
+    }
+    //  添加键盘事件
+    document.onkeyup = function (event) {
+        // console.log(event.keyCode);
+        var key = event.keyCode
+        if (key == 37) {
+            console.log("左键盘被按");
+            move2Pic();
+        } else if (key == 38) {
+            move1Pic();
+        } else if (key == 39) {
+            move3Pic();
+        } else if (key == 40) {
+            movePic();
+            // key值需要传入
+
+        }
+    }
+
+    function movePic() {
+        var x = divBox.querySelector(".space").style.left;
+        var y = divBox.querySelector(".space").style.top
+        //    console.log(x);
+        // 遍历小div找到空白上面的那张 赋值top为y
+        for (let i = 0; i < 16; i++) {
+            if (parseInt(divBox.children[i].style.top) == parseInt(y) - 200 && parseInt(divBox.children[i].style.left) == parseInt(x)) {
+                divBox.children[i].style.top = y;
+                divBox.querySelector(".space").style.top = parseInt(y) - 200 + "px";
+            }
+        }
+    }
+    function move1Pic() {
+        var x = divBox.querySelector(".space").style.left;
+        var y = divBox.querySelector(".space").style.top
+        //    console.log(x);
+        // 遍历小div找到空白上面的那张 赋值top为y
+        for (let i = 0; i < 16; i++) {
+            if (parseInt(divBox.children[i].style.top) == parseInt(y) + 200 && parseInt(divBox.children[i].style.left) == parseInt(x)) {
+                divBox.children[i].style.top = y;
+                divBox.querySelector(".space").style.top = parseInt(y) + 200 + "px";
+            }
+        }
+    }
+    function move2Pic() {
+        var x = divBox.querySelector(".space").style.left;
+        var y = divBox.querySelector(".space").style.top
+        //    console.log(x);
+        // 遍历小div找到空白上面的那张 赋值top为y
+        for (let i = 0; i < 16; i++) {
+            if (parseInt(divBox.children[i].style.left) == parseInt(x) + 200 && parseInt(divBox.children[i].style.top) == parseInt(y)) {
+                divBox.children[i].style.left = x;
+                divBox.querySelector(".space").style.left = parseInt(x) + 200 + "px";
+            }
+        }
+    }
+    function move3Pic() {
+        var x = divBox.querySelector(".space").style.left;
+        var y = divBox.querySelector(".space").style.top
+        //    console.log(x);
+        // 遍历小div找到空白上面的那张 赋值top为y
+        for (let i = 0; i < 16; i++) {
+            if (parseInt(divBox.children[i].style.left) == parseInt(x) - 200 && parseInt(divBox.children[i].style.top) == parseInt(y)) {
+                divBox.children[i].style.left = x;
+                divBox.querySelector(".space").style.left = parseInt(x) - 200 + "px";
+            }
+        }
+    }
+
+</script>

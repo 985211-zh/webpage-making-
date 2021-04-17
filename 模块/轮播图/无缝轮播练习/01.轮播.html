@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: relative;
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+            border: 5px solid rgba(0, 245, 0, 0.575);
+            overflow: hidden;
+        }
+
+        ul {
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+            width: 500px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li style="background-color: pink;"></li>
+            <li style="background-color: blue;"></li>
+            <li style="background-color: pink;"></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var ul = document.getElementsByTagName('ul')[0]
+    var li = document.getElementsByTagName('li')[0]
+    console.log(ul, li);
+    var index = 0
+    setInterval(function () {
+        index++
+        if (index > 2) {
+            ul.style.left = 0
+            index = 1
+        }
+        move(ul, -index * 500, 2)
+
+    }, 2000)
+
+
+    function move(obj, target, speend) {
+
+        if (obj.offsetLeft > target) {
+            speend = -speend
+        }
+
+        clearInterval(obj.timer)
+        obj.timer = setInterval(function () {
+            var oldvalue = obj.offsetLeft;
+            var newvalue = oldvalue + speend
+
+            if (speend < 0 && newvalue < target || speend > 0 && newvalue > target) {
+                newvalue = target
+            }
+
+            obj.style.left = newvalue + 'px'
+
+            if (newvalue == target) {
+                clearInterval(obj.timer)
+            }
+        }, 5)
+    }
+</script>
+
+</html>

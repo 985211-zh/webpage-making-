@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: relative;
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+            border: 5px solid rgba(0, 245, 0, 0.575);
+            /* overflow: hidden; */
+        }
+
+        ul {
+            position: absolute;
+            width: 1500px;
+            left: 0;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+            width: 500px;
+            height: 300px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li style="background-color: pink;"></li>
+            <!-- <li style="background-color: blue;"></li>
+            <li style="background-color: pink;"></li> -->
+        </ul>
+    </div>
+</body>
+<script>
+    var ul = document.getElementsByTagName('ul')[0]
+    // var li = document.getElementsByTagName('li')[0]
+    setInterval(function () {
+        var step = (1000- ul.offsetLeft) / 10
+        ul.style.left = ul.offsetLeft + step + 'px'
+    }, 30)
+</script>
+
+</html>

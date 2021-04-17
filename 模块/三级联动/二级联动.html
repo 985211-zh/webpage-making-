@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="./area.js"></script>
+<script>
+    // 先布局页面
+    var provinceSelect = document.createElement("select");
+    var provinces = Object.keys(area);
+    for(var i = 0; i < provinces.length; i++){
+        var option = document.createElement("option");
+        option.textContent = provinces[i];
+        provinceSelect.appendChild(option);
+    }
+    document.body.appendChild(provinceSelect);
+
+    var citySelect = document.createElement("select");
+    var citys = null;
+    console.log(area[provinces[0]]);
+    function layoutCitySelect(index){
+        citys = Object.keys(area[provinces[index]][0]);
+        for (var i = 0; i < citys.length; i++) {
+            var option = document.createElement("option");
+            option.textContent = citys[i];
+            citySelect.appendChild(option);
+        }
+    }
+    layoutCitySelect(0);
+    document.body.appendChild(citySelect);
+
+    var p = document.createElement("p");
+    p.textContent = "您选择了：" + provinces[0] + "，" + citys[0];
+    document.body.appendChild(p);
+
+    // 实现联动
+    provinceSelect.onchange = function(){
+        // console.log(this.selectedIndex);
+        citySelect.innerHTML = "";
+        layoutCitySelect(this.selectedIndex);
+        // 显示位置
+        p.textContent = "您选择了：" + provinces[provinceSelect.selectedIndex] + "，" + citys[0];
+    }
+    citySelect.onchange = function(){
+        // 显示位置
+        p.textContent = "您选择了：" + provinces[provinceSelect.selectedIndex] + "，" + citys[this.selectedIndex];
+    }
+</script>

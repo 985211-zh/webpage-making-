@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #t1{
+            width: 500px;
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+        }
+        th{
+            border: 1px solid black;
+        }
+        #t2{
+            border: 1px solid black;
+            width: 600px;
+            text-align: center;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <!-- table:表格标签，展示一个表格的信息元素，块级元素
+        table不设置宽度的时候，宽度是被内容撑开使用，设置宽度且内部td没有设置的时候，td会按照
+        内容的长度比例进行拉伸操作
+    -->
+    <table id="t1">
+        <!-- 表头 -->
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>张三</td>
+                <td>20</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>21</td>
+                <td>女</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>22</td>
+                <td>男</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <!-- <tbody></tbody><可以省略不写，浏览器解析标记代码的时候会自动补全添加，但是
+    在实际开发中容易补出错误，需要格外注意，thea的也不是必须的，完全可以使用tr td替代 -->
+    <table id="t2">
+        <tr>
+            <td>时间</td>
+            <td>周一</td>
+            <td>周二</td>
+            <td>周三</td>
+        </tr>
+        <tr>
+            <td rowspan="2">上午</td>
+            <td>语文</td>
+            <td>语文</td>
+            <td>语文</td>
+        </tr>
+        <tr>
+            <td>语文</td>
+            <td>语文</td>
+            <td>语文</td>
+        </tr>
+        <tr>
+            <td rowspan="2">下午</td>
+            <td>数学</td>
+            <td>数学</td>
+            <td>数学</td>
+        </tr>
+        <tr>
+            <td>数学</td>
+            <td>数学</td>
+            <td>数学</td>
+        </tr>
+        <tr>
+            <td>晚上</td>
+            <td colspan="3">自习</td>
+           
+        </tr>
+    </table>
+</body>
+</html>

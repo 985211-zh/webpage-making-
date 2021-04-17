@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #banner {
+            width: 100%;
+            padding: 0;
+            clear: both;
+            position: relative;
+            height: 400px;
+            z-index: 1;
+        
+        }
+
+        #img-list {
+            display: block;
+            width: 5760px;
+            height: 400px;
+            overflow: hidden;
+            z-index: 1;
+            position: relative;
+        }
+
+        #img-list li {
+            float: left;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        #list {
+            width: 100%;
+            height: 18px;
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            z-index: 100;
+        }
+
+        #list>span {
+            width: 18px;
+            height: 18px;
+            overflow: hidden;
+            display: inline-block;
+            margin: 0 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <ul id="img-list">
+            <li><img src="./3.jpg" alt="1" /></li>
+            <li><img src="./4.jpg" alt="2" /></li>
+            <li><img src="./5.jpg" alt="3" /></li>
+        </ul>
+        <div id="list">
+            <span index="1" class="on"></span>
+            <span index="2"></span>
+            <span index="3"></span>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var banner = document.getElementById('banner');
+    var imglist = document.getElementById('img-list').getElementsByTagName("li");
+    var list = document.getElementById('list').getElementsByTagName('span');
+    var index = 0;
+    var timer = null;
+
+    //设置自动播放函数
+    function autoPlay() {
+        if (++index >= imglist.length) { index = 0 };
+        changeImg(index);
+    }
+    // 定义并调用自动播放函数
+    timer = setInterval(autoPlay, 1000);
+    // 定义图片切换函数
+    function changeImg(curIndex) {
+        for (var i = 0; i < imglist.length; i++) {
+            imglist[i].style.display = "none";
+            list[i].className = "";
+        }
+        imglist[curIndex].style.display = "block";
+        list[curIndex].className = "on";
+    }
+    // 最后遍历所有数字导航实现划过切换至对应的图片，需获得它的索引值
+    for (var i = 0; i < list.length; i++) {
+        list[i].index = i;
+        list[i].onmouseover = function () {
+            clearInterval(timer);
+            changeImg(this.index);
+        }
+    };
+
+
+</script>

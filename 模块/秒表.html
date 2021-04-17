@@ -1,0 +1,129 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秒表</title>
+    <style>
+        #box {
+            width: 400px;
+            margin: 20px auto;
+            border: 2px solid cyan;
+            text-align: center;
+        }
+
+        #box>div {
+            margin: 20px auto;
+        }
+
+        #watch {
+            font-size: 35px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <!-- 显示秒表 -->
+        <div id="watch">00:00:000</div>
+        <!-- 三个按钮 -->
+        <div>
+            <button id="start">开始</button>
+            <button id="divide">分割</button>
+            <button id="reset">重置</button>
+        </div>
+        <!-- 记录 -->
+        <div id="record">
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    // 找到秒表标签
+    var watch = document.getElementById("watch");
+    // 找到三个按钮
+    var start = document.getElementById("start");
+    var divide = document.getElementById("divide");
+    var reset = document.getElementById("reset");
+    // 记录标签
+    var record = document.getElementById("record");
+
+    // 记录当前总时间(ms)
+    var time = 0;
+    // 定义变量表示当前是否计时
+    var isStart = false;
+    // 计时器
+    var interval=null;
+
+    // 点击开始按钮
+    start.onclick = function () {
+        // if (!isStart) { // !isStart => isStart == false
+        //         start.textContent = "暂停";
+        //         isStart = true;
+        //     }else{
+        //         start.textContent = "继续";
+        //         isStart = false;
+        //     }
+        if (!isStart) { // !isStart => isStart == false
+            start.textContent = "暂停";
+            // 写计时逻辑
+        interval=setInterval(function () {
+                time += 51;
+                watch.textContent=formatTime(time);
+            }, 51);
+        } else {
+            start.textContent = "继续";
+            // 写暂停逻辑
+            clearInterval(interval);
+            interval=null;
+        }
+        isStart = !isStart;
+    }
+    // 封装方法：把毫秒处理成分钟 m: s : ms
+    function formatTime(t) {
+        var ms = t % 1000;
+        ms = ms < 10 ? "00"+ms:(ms<100 ? '0'+ms:ms)
+        var s = Math.floor(t / 1000 % 60);
+        s = s < 10 ? "0"+s : s;
+        var m = Math.floor(t / 1000 / 60);
+        m = m < 10 ? "0"+m : m;
+        return m + ":" + s + ":" + ms
+        
+    }
+    // 分割
+    divide.onclick = function () {
+        if (isStart) {
+            // 创建p标签
+            var p = document.createElement("p");
+            p.textContent=watch.textContent;
+            // 拼接到父标签
+            record.appendChild(p);
+        }
+
+    }
+    // 重置
+    reset.onclick = function () {
+        clearInterval(interval);
+        interval=0;
+        watch.textContent="00:00:000";
+        start.textContent = "开始";
+        isStart = false;
+        time = 0;
+        // 清除p标签
+        var ps= record.getElementsByTagName("p");
+        // var ps= record.querySelectorAll("p");
+        for(var i = 0;i < ps.length;i++){
+            ps[i].remove;
+        }
+    }
+    // getElement系列和querySelector系列区别
+    // 1.参数不一样：前者参数是字符串，后者参数选择器字符串
+    // 2.返回值不同，前者返回HTMLCollection，后者返回NodeList
+    // 3.变量的实时性，前者获取一次，以后DOM发生变化了，增加前者选择的标签，那么前者获取的变量可以实时更新，而后者变量不会发生变化，想要得到最新的符合条件的标签，需要重新获取一下·
+
+</script>

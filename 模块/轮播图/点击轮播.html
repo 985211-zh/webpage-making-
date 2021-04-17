@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scrollBox {
+            width: 812px;
+            height: 304px;
+            position: relative;
+        }
+
+        .imgBox a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* display: none; */
+            opacity: 0;
+            transition: all .8s cubic-bezier(1, 0.44, 0, 0.16);
+            /* transition:属性 时间 时间曲线 延迟 ; */
+        }
+
+        .imgBox a:first-child {
+            /* display: block; */
+            opacity: 1;
+        }
+
+        .imgBox a img {
+            width: 812px;
+            height: 304px;
+            /* display: block; */
+        }
+
+        .tabBox {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .tabBox a {
+            width: 30px;
+            height: 30px;
+            /* border-radius: 30px; 设置四个角*/
+            /* border-radius: 2px 30px; */
+            /* 第一个值左上、右下;第二个值右上 左下 */
+            /* 左上 右上、左下  右下 */
+            border-radius: 2px 30px 10px;
+
+            display: inline-block;
+            background-color: black;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        /* 第三步：添加触发显示 */
+        .imgBox a:target {
+            /* display: block; */
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scrollBox">
+        <!-- 图片集 -->
+        <div class="imgBox">
+            <!-- 第一步：添加标识 -->
+            <a href="javascript:void(0)" id="img1"><img src="./images/a.webp" alt=""></a>
+            <a href="javascript:void(0)" id="img2"><img src="./images/b.webp" alt=""></a>
+            <a href="javascript:void(0)" id="img3"><img src="./images/c.webp" alt=""></a>
+        </div>
+        <!-- 按钮集 1  2  3 -->
+        <div class="tabBox">
+            <!-- 第二部：添加锚点指向 -->
+            <a href="#img1">1</a>
+            <a href="#img2">2</a>
+            <a href="#img3">3</a>
+        </div>
+    </div>
+</body>
+
+</html>

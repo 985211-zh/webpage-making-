@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     .a1{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        left: 500px;
+    }
+  .a2 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        left: 0;
+        top: 100px;
+    }
+</style>
+
+<body>
+    <button>点我</button>
+    <button>点我</button>
+    <div class="a1"></div>
+    <div class="a2"></div>
+    <script>
+        var btn = document.getElementsByTagName('button')
+        var div = document.getElementsByTagName('div')
+        btn[0].onclick = function () {
+            move(div[0], 0, 10)
+            console.log(btn[0],div[0]);
+        }
+        btn[1].onclick = function () {
+            move(div[1], 800, 10)
+            // console.log(btn[1],div[1]);
+        }
+        // 封装
+        // var timer
+        function move(obj, target, speend) {
+            if (obj.offsetLeft > target) {
+                speend = -speend
+            }
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function () {
+                var oldvalue = obj.offsetLeft;
+                var newvalue = oldvalue + speend
+                // 
+                if (speend < 0 && newvalue < target || speend > 0 && newvalue > target) {
+                    newvalue = target
+                }
+                obj.style.left = newvalue + 'px'
+                // console.log(newvalue);
+                if (newvalue == target) {
+                    clearInterval(obj.timer)
+                }
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -200px 0  0 -200px;
+            font-size: 50px;
+            line-height: 200px;
+            text-align: center;
+            color: red;
+        }
+        h2{
+            text-align: center;
+            color: gray;
+        }
+        .canvas{
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            margin: -200px 0  0 -200px;
+        }
+    </style>
+</head>
+<body>
+    <h2>刮刮乐</h2>
+    <div class="content">中对象一款</div>
+    <canvas id="canvas" class="canvas" width="400px" height="200px" style="border:1px solid  red"></canvas>
+    <script>                  
+        // js绘制
+        var  isdown = false;
+        var  canvas = document.getElementById("canvas");
+        txt = canvas.getContext("2d");
+
+        txt.fillStyle = "#ccc";
+        txt.fillRect(0,0,400,200);
+
+        // 鼠标按下,按下鼠标返回true 否则返回的是 false
+        function toggle(e,down){
+            e.preventDefault();
+            return !down;
+        }
+
+        // 清除画布上的遮盖颜色#ccc
+        function draw(e){
+            e.preventDefault();
+            if(isdown){
+                if(e.changedTouches){
+                    e = e.changedTouches[e.changedTouches.length - 1];
+                }
+                // 抹除背景颜色的时候，鼠标在合理范围在移动
+                var height = parseInt((window.innerHeight) / 2 - 200);
+                var width = parseInt((window.innerWidth)/ 2 - 200);
+                touchTop = e.clientY - height;
+                touchLeft = e.clientX - width;
+                // with关键字：在js高级程序的设计中，with主要作用是把代码放入一个特定作用域
+                // 使用他的目的：简化方便了多次访问一个对象
+                with(txt){
+                    beginPath();//开始绘制
+                    // 绘制图形
+                    arc(touchLeft,touchTop,10,0,Math.PI * 2);
+                    // 给这个小圆填充颜色
+                    fill();
+                }
+            }
+        }
+        // destination-out前覆盖后 xor
+        // 在 canvas 当中 将图像源和目标图像，通过如下属性可以叠放在目标图像之上
+        txt.globalCompositeOperation = 'xor';
+        txt.globalCompositeOperation = 'xor';
+
+        // 鼠标触摸屏幕的时候，相当于按下鼠标操作
+        canvas.addEventListener("touchstart",(e)=>{
+            isdown = toggle(e,false);
+        })
+        // 手指移动
+        canvas.addEventListener("touchmove",draw);
+        // 结束
+        canvas.addEventListener("touchend",(e)=>{
+            isdown = toggle(e,true);
+        })
+        // PC端的按下鼠标事件
+        canvas.addEventListener("mousedown",(e)=>{
+            isdown = toggle(e,false);
+        })
+        // 手指移动
+        canvas.addEventListener("mousemove",draw);
+        // 结束
+        canvas.addEventListener("mouseend",(e)=>{
+            isdown = toggle(e,true);
+        })
+    </script>
+</body>
+</html>

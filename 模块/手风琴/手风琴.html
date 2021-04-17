@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #222;
+        }
+       ul{
+            width: 1200px;
+            height: 260px;
+            border: 1px solid red;
+            margin: 100px auto;
+            /* 设置弹性布局  弹性布局有一个特点，快标签也可以左右排列 */
+            display:flex;
+        }
+        li{
+            width: 172px;
+            height: 100%;
+            border: 1px solid red;
+            /* 清除li自带的小圆点 */
+            list-style: none;
+             /* 设置背景图片显示的位置  center居中  水平居中，垂直居中 */
+            background-position: center center;
+            /* 元素变化的时候，默认是一瞬间完成的 transition就是过度的意思，就是让
+            元素变化的时候经过一段时间完成，all表示所有的样式都过度  0.2s表示时间  可以简写  .2s */
+            transition: all 0.2s;
+        }
+        /* alt+Shift+下键 */
+        .item1{
+            background-image: url(img/img1.jpg);  
+        }
+        .item2{
+            background-image: url(img/img2.jpg);   
+        }
+        .item3{
+            background-image: url(img/img3.jpg);  
+        }
+        .item4{
+            background-image: url(img/img4.jpg);
+        }
+        .item5{
+            background-image: url(img/img6.jpg); 
+        }
+        .item6{
+            background-image: url(img/img6.jpg);
+        }
+        .item7{
+            background-image: url(img/img7.jpg);
+        }
+        /* 选择器优先级 */
+        li:hover{
+            width: 400px !important;
+        }
+        ul:hover li{
+            width: 133px;
+        }
+        p{
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+            color: white;
+            /* 修改文字的排列方式，让文字竖着排列 */
+            writing-mode: vertical-lr;
+            text-align: center;
+            line-height: 172px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.5s;
+        }
+        li:hover p{
+            /* 设置透明度   值得范围是0-1  0表示全透明  1表示不透明 */
+            opacity: 0;
+
+        }
+        li:hover p{
+            line-height: 133px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 用margin 和定义 实现元素垂直居中 水平居中-->
+    <!-- 语义化标签，用来定义网页的主体部分，在样式上和div一模一样 -->
+    <!-- 列表 -->
+    <ul>
+        <!-- 列表项 -->
+        <!-- <li>第一列</li>
+        <li>第一列</li>
+        <li>第一列</li> -->
+        <!-- li*7.item$   快捷键-->
+        <li class="item1">
+            <p>温泉酒店</p>
+        </li>
+        <li class="item2">
+            <p>情侣酒店</p>
+        </li>
+        <li class="item3">
+            <p>设计酒店</p>
+        </li>
+        <li class="item4">
+            <p>青年旅舍</p>
+        </li>
+        <li class="item5">
+            <p>特色客栈</p>
+        </li>
+        <li class="item6">
+            <p>海岛酒店</p>
+        </li>
+        <li class="item7">
+            <p>海外温泉</p>
+        </li>
+    </ul>
+</body>
+</html>
